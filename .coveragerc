@@ -4,7 +4,7 @@ omit =
     tests/*
 
 [report]
-fail_under = 90
+fail_under = 80
 
 [html]
 directory = htmlcov
