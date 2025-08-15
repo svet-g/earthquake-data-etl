@@ -4,8 +4,11 @@ import logging
 
 def _ensure_log_directory(base_path=None):
     """Ensure the logs directory exists."""
-    project_root = Path(base_path or __file__).resolve().parent.parent
-    log_directory = project_root / "logs"
+    if base_path:
+        log_directory = Path(base_path) / "logs"
+    else:
+        project_root = Path(__file__).resolve().parent.parent
+        log_directory = project_root / "logs"
     log_directory.mkdir(parents=True, exist_ok=True)
     return log_directory
 
