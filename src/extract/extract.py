@@ -6,9 +6,9 @@ from src.utils.extract_utils import extract_initial_month
 
 logger = setup_logger('extract_data', 'extract_data.log')
 
-file_path_data_last_30_days = Path(__file__).parent.parent.parent / 'data' / 'raw' / 'earthquake-data-last-30-days.geojson'
-file_path_tracker_last_30_days = Path(__file__).parent.parent.parent / 'src' / 'extract' / 'poll_tracker.json'
 last_30_days_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
+file_path_data_last_30_days = Path(__file__).parent.parent.parent / 'data' / 'raw' / 'earthquake-data-last-30-days.geojson'
+file_path_tracker = Path(__file__).parent.parent.parent / 'src' / 'extract' / 'poll_tracker.json'
 
 def extract(initial_poll_url, file_path_data, file_path_tracker):
     '''
@@ -41,3 +41,7 @@ def extract(initial_poll_url, file_path_data, file_path_tracker):
         logger.exception(f'A RequestException occured: {e}', stack_info=True)
     except Exception as e:
         logger.exception(f'An unexpected error occured: {e}', stack_info=True)
+        
+if __name__ == "__main__":
+    
+    extract(last_30_days_url, file_path_data_last_30_days, file_path_tracker)
