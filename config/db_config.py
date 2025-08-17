@@ -52,9 +52,7 @@ def validate_db_config(config):
         for key, value in db_config.items():
             if value == "error":
                 logger.setLevel(logging.ERROR)
-                logger.error(
-                    f"Configuration error: {db_key} {key} is set to 'error'"
-                )
+                logger.error(f"Configuration error: {db_key} {key} is set to 'error'")
                 raise DatabaseConfigError(
                     f"Configuration error: {db_key} {key} is set to 'error'"
                 )

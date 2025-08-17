@@ -29,9 +29,7 @@ def setup_env(argv):
     :raises KeyError: If the ENV variable is not set
     """
     if len(argv) != 2 or argv[1] not in ENVS:
-        raise ValueError(
-            "Please provide an environment: " f"{ENVS}. E.g. run_etl dev"
-        )
+        raise ValueError("Please provide an environment: " f"{ENVS}. E.g. run_etl dev")
 
     env = argv[1]
 

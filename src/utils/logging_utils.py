@@ -15,9 +15,7 @@ def _ensure_log_directory(base_path=None):
 
 def _create_formatter():
     """Create a standard log formatter."""
-    return logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
+    return logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 
 def _create_handlers(log_directory, log_file, level):
@@ -43,9 +41,7 @@ def setup_logger(name, log_file, level=logging.DEBUG, base_path=None):
     logger.setLevel(level)
 
     if not logger.handlers:
-        file_handler, console_handler = _create_handlers(
-            log_directory, log_file, level
-        )
+        file_handler, console_handler = _create_handlers(log_directory, log_file, level)
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
 

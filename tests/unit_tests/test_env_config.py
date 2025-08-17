@@ -25,9 +25,7 @@ def test_setup_env_file_not_found_test(mock_exists):
 @patch("os.path.exists")
 def test_setup_env_file_not_found_prod(mock_exists):
     mock_exists.return_value = False
-    with pytest.raises(
-        FileNotFoundError, match="Environment file '.env' not found"
-    ):
+    with pytest.raises(FileNotFoundError, match="Environment file '.env' not found"):
         setup_env(["script_name", "prod"])
 
 
@@ -73,9 +71,7 @@ def test_cleanup_previous_env():
 
 @patch("config.env_config.load_dotenv")
 @patch("os.path.exists")
-def test_setup_env_loads_correct_env_file(
-    mock_exists, mock_load_dotenv, mocker
-):
+def test_setup_env_loads_correct_env_file(mock_exists, mock_load_dotenv, mocker):
     mock_exists.return_value = True
     mocker.patch("config.env_config.cleanup_previous_env")
 

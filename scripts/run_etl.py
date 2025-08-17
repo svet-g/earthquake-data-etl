@@ -7,8 +7,7 @@ def main():
     # Get the argument from the run_etl command and set up the environment
     setup_env(sys.argv)
     print(
-        f"ETL pipeline run successfully in "
-        f"{os.getenv('ENV', 'error')} environment!"
+        f"ETL pipeline run successfully in " f"{os.getenv('ENV', 'error')} environment!"
     )
 
 
