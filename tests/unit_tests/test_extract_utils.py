@@ -75,4 +75,22 @@ class TestExtractInitialMonth():
         os.remove(file_path_data)
         os.remove(file_path_tracker)
     
+    @patch('src.utils.extract_utils.requests.get')
+    @patch('src.utils.extract_utils.datetime.datetime')
+    def test_logs_tracker_file_creation(self, mocked_datetime, mocked_get, mocked_geojson, caplog):
+        with caplog.at_level(logging.INFO):
+            # arrange
+            file_path_data = Path(__file__).parent.parent.parent / 'data' / 'test' / 'test_extract.geojson'
+            file_path_tracker = Path(__file__).parent.parent.parent / 'test_extract_tracker.json'
+            url = 'fake url'
+            mocked_get.return_value.json.return_value = mocked_geojson
+            mocked_datetime.now.return_value.strftime.return_value = '1993-08-17T10:31:19'
+            # act
+            extract_initial_month(url, file_path_data, file_path_tracker)
+            # assert
+            assert 'Tracker file successful created - time: 1993-08-17T10:31:19, path: /home/svet-g/df/capstone/earthquake-data-etl/test_extract_tracker.json' in caplog.text
+            # clean up test file
+            os.remove(file_path_data)
+            os.remove(file_path_tracker)
+    
     # can also test that the json file contains the right time and is in the right format
