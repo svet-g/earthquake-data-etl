@@ -2,25 +2,12 @@ import os
 from pathlib import Path
 from requests.exceptions import JSONDecodeError, HTTPError, RequestException
 from src.utils.logging_utils import setup_logger
-from src.utils.extract_utils import extract_initial_month
+from src.utils.extract_utils import extract_initial_month, extract_sample
 
 logger = setup_logger("extract_data", "extract_data.log")
 
-last_30_days_url = (
-    "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
-)
-file_path_data_last_30_days = (
-    Path(__file__).parent.parent.parent
-    / "data"
-    / "raw"
-    / "earthquake-data-last-30-days.geojson"
-)
-file_path_tracker = (
-    Path(__file__).parent.parent.parent / "src" / "extract" / "poll_tracker.json"
-)
 
-
-def extract(initial_poll_url, file_path_data, file_path_tracker):
+def extract(initial_poll_url, file_path_data, file_path_tracker, file_path_sample):
     """
     params:
         url (string) -> url string for the API call
@@ -34,6 +21,7 @@ def extract(initial_poll_url, file_path_data, file_path_tracker):
         # to get the initial data in as a geojson
         if not os.path.isfile(file_path_tracker):
             extract_initial_month(initial_poll_url, file_path_data, file_path_tracker)
+            extract_sample(file_path_data, file_path_sample)
         # if the file exists - do nothing -
         # other functionality will come if get to strech goals
         else:
@@ -54,5 +42,27 @@ def extract(initial_poll_url, file_path_data, file_path_tracker):
 
 
 if __name__ == "__main__":
+    
+    last_30_days_url = (
+    "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+    )
+    
+    file_path_data_last_30_days = (
+    Path(__file__).parent.parent.parent
+    / "data"
+    / "raw"
+    / "earthquake-data-last-30-days.geojson"
+    )
+    
+    file_path_tracker = (
+    Path(__file__).parent.parent.parent / "src" / "extract" / "poll_tracker.json"
+    )
 
-    extract(last_30_days_url, file_path_data_last_30_days, file_path_tracker)
+    file_path_sample = (
+        Path(__file__).parent.parent.parent
+        / "data"
+        / "test"
+        / "test_earthquake_data_last_30_days.geojson"
+    )
+
+    extract(last_30_days_url, file_path_data_last_30_days, file_path_tracker, file_path_sample)

@@ -2,6 +2,7 @@ import requests
 import geojson
 import json
 import datetime
+from pathlib import Path
 from src.utils.logging_utils import setup_logger
 
 logger = setup_logger("extract_data_utils", "extract_data_utils.log")
@@ -37,3 +38,40 @@ def extract_initial_month(url, file_path_data, file_path_tracker):
         f"Tracker file successful created - time: {current_time_UTC}, path: {f.name} :)"
     )
     return last_poll_dict
+
+# def duplicate_original_data(file_path_read, file_path_write):
+#     '''
+#     creates a testing copy with indented view of the loaded geojson
+#     '''
+#     with open(file_path_read, 'r') as f:
+#         loaded_file = json.load(f)
+#     with open(file_path_write, 'w') as f:
+#         json.dump(loaded_file, f, indent=4)
+
+def extract_sample(file_path_read, file_path_write):
+    '''
+    
+    creates a small ten row sample of the original json and saves it to a local file and returns the json
+    
+    params:
+        file_path_read (string) -> a file path to json file to retrive a sample from
+        file_path_write (string) -> a file path to save the sample of the data that will be used for testing
+        
+    returns:
+        a JSON of a sample of the original dataframe - total 10 rows with forced duplication
+        to use for testing
+
+    '''
+    
+    # load original ingested data
+    with open(file_path_read, 'r') as f:
+        data = json.load(f)
+    
+    # take a sample of first 5 earthquakes and duplicate them
+    data['features'] = data['features'][:5] * 2
+    
+    # dump data into a test file
+    with open(file_path_write, 'w') as f:
+        json.dump(data, f, indent=4)
+        
+    return data
