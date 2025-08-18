@@ -15,6 +15,7 @@ class TestDropsRowsandColumns:
         expected_non_earthquake_type_count = 0
         expected_gap_above_180_count = 0
         expected_gap_is_null_count = 0
+        expected_duplicates = 0
         
         # act
         actual = drop_rows(test_transform_gdf)
@@ -27,10 +28,13 @@ class TestDropsRowsandColumns:
         actual_gap_is_null = actual[actual['gap'].isna()]
         actual_gap_is_null_count = actual_gap_is_null['id'].count()
         
+        actual_duplicates = len(actual['id'])-len(actual['id'].drop_duplicates())
+        
         # assert
         assert expected_non_earthquake_type_count == actual_non_earthquake_type_count
         assert expected_gap_above_180_count == actual_gap_above_180_count
         assert expected_gap_is_null_count == actual_gap_is_null_count
+        assert expected_duplicates == actual_duplicates
         
     def test_drops_specified_columns(self, test_transform_gdf):
         # arrange

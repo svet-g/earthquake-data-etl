@@ -3,10 +3,13 @@ import geopandas
 def drop_rows(gdf):
     '''
     clean up rows where type != 'earthquake and 'gap' is null or greater than 180 to improve accuracy of the location and depth data
+    order dataframe by coordinates and drop any duplicates
     '''
     gdf = gdf[gdf['type'] == 'earthquake']
     gdf = gdf.dropna(subset=['gap'])
     gdf = gdf[gdf['gap'] < 180]
+    gdf["geometry"] = gdf.normalize()
+    gdf.drop_duplicates(inplace=True)
     return gdf
 
 def drop_columns(gdf, columns_to_drop):
