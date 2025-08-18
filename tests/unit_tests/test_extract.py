@@ -91,7 +91,7 @@ class TestExtract:
             assert "A RequestException occured:" in caplog.text
 
     @patch("src.extract.extract.os.path.isfile")
-    def test_logs_failure_if_RequestException_raised(self, mocked_file_check, test_data_file_path, caplog):
+    def test_logs_failure_if_Exception_raised(self, mocked_file_check, test_data_file_path, caplog):
         with caplog.at_level(logging.ERROR):
             # arrange
             file_path_data = (
