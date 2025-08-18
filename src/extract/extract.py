@@ -41,7 +41,7 @@ def extract(initial_poll_url, file_path_data, file_path_tracker, file_path_sampl
         logger.exception(f"An unexpected error occured: {e}", stack_info=True)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     
     last_30_days_url = (
     "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
