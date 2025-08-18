@@ -1,4 +1,5 @@
 import geopandas
+import pandas as pd
 
 def drop_rows(gdf):
     '''
@@ -20,5 +21,19 @@ def drop_columns(gdf, columns_to_drop):
     '''
     gdf.drop(columns_to_drop, axis=1, inplace=True)
     return gdf
+
+
+def standardise_formatting(gdf):
+    # break up geometry
+    gdf['longitude'] = gdf['geometry'].x
+    gdf['latitude'] = gdf['geometry'].y
+    gdf['depth'] = gdf['geometry'].z
+    df = gdf.drop(['geometry'], axis=1)
+    # change tsunami to boolean values
+    df['tsunami'] = df['tsunami'].astype('bool')
+    # change unix time to timestamps
+    df['time'] = pd.to_datetime(df['time'], utc=True, unit='ms')
+    df['updated'] = pd.to_datetime(df['updated'], utc=True, unit='ms')
+    return df
 
 # can add fillna()s for alerts, cdi and felt (these seems to be for very minor earthquakes so makes sense they are null - but double check!)

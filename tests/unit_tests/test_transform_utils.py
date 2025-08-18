@@ -6,8 +6,9 @@ import json
 import logging
 from requests import exceptions
 import datetime
-import copy
-from src.utils.transform_utils import drop_rows, drop_columns
+import numpy as np
+import pandas as pd
+from src.utils.transform_utils import drop_rows, drop_columns, standardise_formatting
 
 class TestDropsRowsandColumns:
     def test_drops_specified_rows(self, test_transform_gdf):
@@ -44,7 +45,6 @@ class TestDropsRowsandColumns:
                             'time',
                             'updated',
                             'url',
-                            'detail',
                             'felt',
                             'cdi',
                             'alert',
@@ -54,6 +54,7 @@ class TestDropsRowsandColumns:
                             'geometry']
         
         columns_to_drop = ['tz',
+                            'detail',
                             'mmi',
                             'status',
                             'net',
@@ -73,6 +74,30 @@ class TestDropsRowsandColumns:
         # assert
         assert expected_columns == actual_columns
         
-class TestHandleNulls:
-    def test_removes_nulls(self):
-        pass
+class TestStandardiseFormatting:
+    def test_changes_unix_epoch_to_datetime(self, test_transform_gdf):
+        # act
+        gdf = standardise_formatting(test_transform_gdf)
+        # assert
+        assert isinstance(gdf['time'][0], datetime.datetime)
+        assert isinstance(gdf['updated'][0], datetime.datetime)
+    
+    def test_creates_boolean_columns_where_required(self, test_transform_gdf):
+        # act
+        gdf = standardise_formatting(test_transform_gdf)
+        # assert
+        assert isinstance(gdf['tsunami'][0], np.bool)
+    
+    def test_changes_geometry_to_longitude_latitude_and_depth(self, test_transform_gdf):
+        # arrange
+        expected_included_columns = ['longitude', 'latitude', 'depth']
+        # act
+        df = standardise_formatting(test_transform_gdf)
+        # assert
+        assert all([column in df.columns for column in expected_included_columns])
+    
+    def test_returns_a_pandas_df(self, test_transform_gdf):
+        # act
+        df = standardise_formatting(test_transform_gdf)
+        # assert
+        assert isinstance(df, pd.DataFrame)
