@@ -5,6 +5,8 @@ from pathlib import Path
 from datetime import datetime
 from src.extract.extract import extract
 from src.transform.transform import transform
+from src.load.load import load
+from src.utils.load_utils import db_engine
 
 
 def main():
@@ -50,11 +52,16 @@ def main():
                         'gap',
                         'type',
                         'title']
+    engine = db_engine()
+    table_name = 'earthquakes-svet-g'
+    schema = 'de_2506_a'
+    mode = 'replace'
     # Get the argument from the run_etl command and set up the environment
     setup_env(sys.argv)
     # execute extract, transform and load
     extract(last_30_days_url, file_path_data_last_30_days, file_path_tracker, file_path_sample)
-    transform(file_path_data_last_30_days, file_path_transformed_data, columns_to_drop)
+    df = transform(file_path_data_last_30_days, file_path_transformed_data, columns_to_drop)
+    load(df, engine, table_name, schema, mode)
     print(
         f"ETL pipeline run successfully in " f"{os.getenv('ENV', 'error')} environment!"
     )
