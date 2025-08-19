@@ -22,6 +22,6 @@ def test_geojson(test_data_file_path):
         return json.load(f)
 
 @pytest.fixture
-def test_extracted_dataframe(test_data_file_path):
-    gdf = geopandas.load_file(test_data_file_path)
+def test_transform_gdf(test_data_file_path):
+    gdf = geopandas.read_file(test_data_file_path)
     return gdf
