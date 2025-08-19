@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 from src.utils.logging_utils import setup_logger
-from src.utils.transform_utils import drop_rows, drop_columns, standardise_formatting
+from src.utils.transform_utils import drop_rows, drop_columns, standardise_formatting, asign_depth_bucket, aggregate_data
 
 logger = setup_logger("transform_data", "transform_data.log")
 
@@ -13,6 +13,7 @@ def transform(file_path_raw_data, file_path_transformed_data, columns_to_drop):
         gdf = drop_rows(gdf)
         gdf = drop_columns(gdf, columns_to_drop)
         df = standardise_formatting(gdf)
+        df = aggregate_data(df, asign_depth_bucket)
         df.to_json(file_path_transformed_data, indent=4)
         return df
     except Exception as e:
