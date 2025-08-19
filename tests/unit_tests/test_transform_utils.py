@@ -8,7 +8,7 @@ from requests import exceptions
 import datetime
 import numpy as np
 import pandas as pd
-from src.utils.transform_utils import drop_rows, drop_columns, standardise_formatting
+from src.utils.transform_utils import drop_rows, drop_columns, standardise_formatting, asign_depth_bucket, aggregate_data
 
 class TestDropsRowsandColumns:
     def test_drops_specified_rows(self, test_transform_gdf):
@@ -101,3 +101,34 @@ class TestStandardiseFormatting:
         df = standardise_formatting(test_transform_gdf)
         # assert
         assert isinstance(df, pd.DataFrame)
+
+class TestAggregateData:
+    def test_depth_buckets_correctly_assigns_bucket(self):
+        # arrange
+        depth_shallow = 30
+        depth_intermediate = 299
+        depth_deep = 400
+        depth_highest = 701
+        expected_shallow = 'shallow'
+        expected_intermediate = 'intermediate'
+        expected_deep = 'deep'
+        expected_highest = 'highest_depth'
+        # act
+        actual_shallow = asign_depth_bucket(depth_shallow)
+        actual_intermediate = asign_depth_bucket(depth_intermediate)
+        actual_deep = asign_depth_bucket(depth_deep)
+        actual_highest = asign_depth_bucket(depth_highest)
+        # assert
+        assert expected_shallow == actual_shallow
+        assert expected_intermediate == actual_intermediate
+        assert expected_deep == actual_deep
+        assert expected_highest == actual_highest
+    
+    def test_aggragate_data_creates_time_to_report_and_depth_group_columns(self, test_transform_gdf):
+        # arrange
+        expected_new_columns = ['time_to_report', 'depth_group']
+        # act
+        df_with_depth_column = standardise_formatting(test_transform_gdf)
+        actual = aggregate_data(df_with_depth_column, asign_depth_bucket)
+        # assert
+        assert all([column in actual.columns for column in expected_new_columns])
