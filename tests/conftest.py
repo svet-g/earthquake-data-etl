@@ -27,7 +27,7 @@ def test_procesed_data_file_path():
         Path(__file__).parent.parent
         / 'data'
         / 'test'
-        / 'test_2025-08-19 10:40:20.057548_transformed_earthquake_data.json'
+        / 'test_2025-08-19 16:19:08.416693_transformed_earthquake_data.json'
     )
     return file_path
 
