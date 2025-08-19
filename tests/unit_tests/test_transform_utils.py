@@ -124,9 +124,9 @@ class TestAggregateData:
         assert expected_deep == actual_deep
         assert expected_highest == actual_highest
     
-    def test_aggragate_data_creates_time_to_report_and_depth_group_columns(self, test_transform_gdf):
+    def test_aggragate_data_creates_depth_group_column(self, test_transform_gdf):
         # arrange
-        expected_new_columns = ['time_to_report', 'depth_group']
+        expected_new_columns = ['depth_group']
         # act
         df_with_depth_column = standardise_formatting(test_transform_gdf)
         actual = aggregate_data(df_with_depth_column, asign_depth_bucket)

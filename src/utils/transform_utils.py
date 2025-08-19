@@ -47,8 +47,6 @@ def asign_depth_bucket(depth):
         return 'highest_depth'
 
 def aggregate_data(df, depth_buckets_func):
-    # create a columns that calculates the difference between time of update and actual start time of the earthquake
-    df['time_to_report'] = df['updated'] - df['time']
     # create a column that buckets depths into depth groups: shallow < 60 km, intermediate 60-300km, deep 300km-700km, highest_depth > 700 
     df['depth_group'] = df['depth'].apply(depth_buckets_func)
     return df

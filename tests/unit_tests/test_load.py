@@ -29,7 +29,6 @@ class TestLoad:
                             'longitude',
                             'latitude',
                             'depth',
-                            'time_to_report',
                             'depth_group']
         # act
         load(test_processed_df, engine, table_name, schema, mode)
