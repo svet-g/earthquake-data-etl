@@ -3,6 +3,7 @@ import sys
 from config.env_config import setup_env
 from pathlib import Path
 from datetime import datetime
+from sqlalchemy import text
 from src.extract.extract import extract
 from src.transform.transform import transform
 from src.load.load import load
@@ -78,8 +79,19 @@ def main():
         extract(last_30_days_url, file_path_data_last_30_days, file_path_tracker, file_path_sample)
         df = transform(file_path_data_last_30_days, file_path_transformed_data, columns_to_drop)
         load(df, engine, table_name, schema, mode)
+        with engine.connect() as connection:
+            connection.execute(text('''ALTER TABLE de_2506_a."earthquakes-svet-g"
+                                        DROP CONSTRAINT IF EXISTS pk_id,
+                                        DROP CONSTRAINT IF EXISTS check_latitude,
+                                        DROP CONSTRAINT IF EXISTS check_longitude,
+                                        DROP CONSTRAINT IF EXISTS check_sig,
+                                        ADD CONSTRAINT pk_id PRIMARY KEY (id),
+                                        ADD CONSTRAINT check_latitude CHECK (latitude BETWEEN -90 AND 90),
+                                        ADD CONSTRAINT check_longitude CHECK (longitude BETWEEN -180 AND 180),
+                                        ADD CONSTRAINT check_sig CHECK (sig >= 0);'''))
+            connection.commit()
         print(
             f"ETL pipeline run successfully in " f"{os.getenv('ENV', 'error')} environment!"
         )
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":
     main()
