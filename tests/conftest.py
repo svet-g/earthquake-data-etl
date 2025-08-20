@@ -14,6 +14,12 @@ def pytest_runtest_setup(item):
     setup_env(["pytest", "test"])
 
 @pytest.fixture
+def prod_environment():
+    setup_env(['run_etl', 'prod'])
+    
+    yield
+
+@pytest.fixture
 def test_data_file_path():
     file_path = (
         Path(__file__).parent.parent
