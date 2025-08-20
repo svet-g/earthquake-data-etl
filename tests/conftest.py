@@ -7,9 +7,11 @@ import geopandas
 import pandas as pd
 from config.env_config import setup_env
 
-@pytest.fixture(scope="session", autouse=True)
-def load_test_env():
-    setup_env(["run_etl", "test"])
+def pytest_runtest_setup(item):
+    """Ensure test environment is set before each test"""
+    project_root = Path(__file__).parent.parent
+    os.chdir(project_root)
+    setup_env(["pytest", "test"])
 
 @pytest.fixture
 def test_data_file_path():
