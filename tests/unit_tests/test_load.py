@@ -1,7 +1,4 @@
-import os
-from sqlalchemy import Engine
-import pandas as pd
-from sqlalchemy import text, create_engine
+from sqlalchemy import text
 from src.utils.load_utils import db_engine
 from src.load.load import load
 
@@ -10,7 +7,7 @@ class TestLoad:
     # need to check datetime format later
     def test_creates_specified_table_in_specified_schema_in_specified_db(self, test_processed_df):
         # arrange
-        engine = create_engine("sqlite:///:memory:")
+        engine = db_engine()
         table_name = 'test'
         schema = None
         mode = 'replace'

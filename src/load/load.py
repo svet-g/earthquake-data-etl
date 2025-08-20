@@ -28,7 +28,10 @@ def load(df, engine, table_name, schema, mode):
     '''
 
     with engine.connect() as connection:
-        df.to_sql(table_name, connection, schema=schema, if_exists=mode, index=False)
+        if schema is None:
+            df.to_sql(table_name, connection, if_exists=mode, index=False)
+        else:
+            df.to_sql(table_name, connection, schema=schema, if_exists=mode, index=False)
         
         # FROM DOCS - just how to use the result
         # result = connection.execute(text("select username from users"))
