@@ -38,7 +38,7 @@ def main():
     # declare those vars that are env specific and run the extract, trasnform and load in each
     if env in ['test', 'dev']:
         schema = None
-        url = 'fake url'
+        url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson'
         test_raw_path = (Path(__file__).parent.parent / 'data' / 'test' / 'test_earthquake_data_last_30_days.geojson')
         test_tracker_path = (Path(__file__).parent.parent / 'data' / 'test' / 'test_tracker.json')
         test_sample_path = (Path(__file__).parent.parent / 'data' / 'test' / 'test_sample.geojson')
