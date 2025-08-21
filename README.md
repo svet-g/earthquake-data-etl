@@ -85,7 +85,6 @@ Creates `earthquakes-svet-g` table in PostgreSQL with:
 - Primary key constraint on `id`
 - Latitude/longitude range validation
 - Significance value validation
-- Processed earthquake data ready for analysis
 
 ---
 
