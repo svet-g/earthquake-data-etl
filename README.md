@@ -61,7 +61,7 @@ run_tests lint         # Lint checks (flake8, sqlfluff)
 
 ## Data Transformations
 
-- Filters events where `type == 'earthquake'` and `gap < 180` (for location accuracy)
+- Filters events where `type == 'earthquake'` and `gap < 180` (for location and depth accuracy)
 - Converts GeoJSON geometry to separate latitude, longitude, depth columns
 - Creates depth categories: shallow (<60km), intermediate (60-300km), deep (300-700km), highest_depth (>700km)
 - Converts Unix timestamps to datetime
