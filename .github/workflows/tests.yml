@@ -3,8 +3,6 @@ name: Earthquake ETL Tests
 on:
   pull_request:
     branches: [ main ]
-  push:
-    branches: [ main ]
 
 jobs:
   test:
@@ -46,6 +44,21 @@ jobs:
           echo 'TARGET_DB_HOST=localhost' >> .env.test
           echo 'TARGET_DB_PORT=5432' >> .env.test
 
-      - name: Run tests
+      - name: Create prod environment file for tests
         run: |
-          run_tests all
+          echo 'ENV=prod' > .env
+          echo 'SOURCE_DB_NAME=test_db' >> .env
+          echo 'SOURCE_DB_USER=test_user' >> .env
+          echo 'SOURCE_DB_PASSWORD=test_pass' >> .env
+          echo 'SOURCE_DB_HOST=localhost' >> .env
+          echo 'SOURCE_DB_PORT=5432' >> .env
+          echo 'TARGET_DB_NAME=test_db' >> .env
+          echo 'TARGET_DB_USER=test_user' >> .env
+          echo 'TARGET_DB_PASSWORD=test_pass' >> .env
+          echo 'TARGET_DB_HOST=localhost' >> .env
+          echo 'TARGET_DB_PORT=5432' >> .env
+
+      - name: Run tests with proper error handling
+        run: |
+          # Use pytest directly instead of run_tests to ensure proper exit codes
+          python -m pytest tests/ -v --cov=src --cov-report=xml -x
