@@ -36,6 +36,7 @@ def main():
                         'gap',
                         'type',
                         'title']
+    patcher = None
     
     # declare those vars that are env specific and run the extract, trasnform and load in each
     try:
