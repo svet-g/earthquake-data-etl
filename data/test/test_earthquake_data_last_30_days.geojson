@@ -1,0 +1,421 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1755440905000,
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson",
+        "title": "USGS All Earthquakes, Past Month",
+        "status": 200,
+        "api": "1.14.1",
+        "count": 11370
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 0.54,
+                "place": "6 km SSW of Idyllwild, CA",
+                "time": 1755440362000,
+                "updated": 1755440571430,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40401178",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40401178.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 4,
+                "net": "ci",
+                "code": "40401178",
+                "ids": ",ci40401178,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 21,
+                "dmin": 0.06215,
+                "rms": 0.13,
+                "gap": 94,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 0.5 - 6 km SSW of Idyllwild, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.7365,
+                    33.6866667,
+                    15.26
+                ]
+            },
+            "id": "ci40401178"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 2.4,
+                "place": "18 km SSW of Silver Peak, Nevada",
+                "time": 1755440264026,
+                "updated": 1755440531841,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00902709",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nn00902709.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 89,
+                "net": "nn",
+                "code": "00902709",
+                "ids": ",nn00902709,",
+                "sources": ",nn,",
+                "types": ",origin,phase-data,",
+                "nst": 36,
+                "dmin": 0.308,
+                "rms": 0.3028,
+                "gap": 67.85,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 2.4 - 18 km SSW of Silver Peak, Nevada"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.7136,
+                    37.5982,
+                    11.2
+                ]
+            },
+            "id": "nn00902709"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1,
+                "place": "11 km S of Stanton, Texas",
+                "time": 1755438685809,
+                "updated": 1755439209131,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2025qdpddh",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/tx2025qdpddh.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 15,
+                "net": "tx",
+                "code": "2025qdpddh",
+                "ids": ",tx2025qdpddh,",
+                "sources": ",tx,",
+                "types": ",origin,phase-data,",
+                "nst": 7,
+                "dmin": 0.1,
+                "rms": 0.3,
+                "gap": 169,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.0 - 11 km S of Stanton, Texas"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.785,
+                    32.028,
+                    5
+                ]
+            },
+            "id": "tx2025qdpddh"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.27,
+                "place": "19 km WNW of Progreso, B.C., MX",
+                "time": 1755436003240,
+                "updated": 1755436224434,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40401162",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40401162.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 25,
+                "net": "ci",
+                "code": "40401162",
+                "ids": ",ci40401162,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 23,
+                "dmin": 0.02899,
+                "rms": 0.14,
+                "gap": 121,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.3 - 19 km WNW of Progreso, B.C., MX"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.7536667,
+                    32.667,
+                    8.05
+                ]
+            },
+            "id": "ci40401162"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.49,
+                "place": "6 km SE of Bombay Beach, CA",
+                "time": 1755435597350,
+                "updated": 1755435811490,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40401146",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40401146.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 34,
+                "net": "ci",
+                "code": "40401146",
+                "ids": ",ci40401146,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 45,
+                "dmin": 0.06317,
+                "rms": 0.23,
+                "gap": 78,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.5 - 6 km SE of Bombay Beach, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.6921667,
+                    33.3096667,
+                    4.94
+                ]
+            },
+            "id": "ci40401146"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 0.54,
+                "place": "6 km SSW of Idyllwild, CA",
+                "time": 1755440362000,
+                "updated": 1755440571430,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40401178",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40401178.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 4,
+                "net": "ci",
+                "code": "40401178",
+                "ids": ",ci40401178,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 21,
+                "dmin": 0.06215,
+                "rms": 0.13,
+                "gap": 94,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 0.5 - 6 km SSW of Idyllwild, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.7365,
+                    33.6866667,
+                    15.26
+                ]
+            },
+            "id": "ci40401178"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 2.4,
+                "place": "18 km SSW of Silver Peak, Nevada",
+                "time": 1755440264026,
+                "updated": 1755440531841,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00902709",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nn00902709.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 89,
+                "net": "nn",
+                "code": "00902709",
+                "ids": ",nn00902709,",
+                "sources": ",nn,",
+                "types": ",origin,phase-data,",
+                "nst": 36,
+                "dmin": 0.308,
+                "rms": 0.3028,
+                "gap": 67.85,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 2.4 - 18 km SSW of Silver Peak, Nevada"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.7136,
+                    37.5982,
+                    11.2
+                ]
+            },
+            "id": "nn00902709"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1,
+                "place": "11 km S of Stanton, Texas",
+                "time": 1755438685809,
+                "updated": 1755439209131,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/tx2025qdpddh",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/tx2025qdpddh.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 15,
+                "net": "tx",
+                "code": "2025qdpddh",
+                "ids": ",tx2025qdpddh,",
+                "sources": ",tx,",
+                "types": ",origin,phase-data,",
+                "nst": 7,
+                "dmin": 0.1,
+                "rms": 0.3,
+                "gap": 169,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.0 - 11 km S of Stanton, Texas"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.785,
+                    32.028,
+                    5
+                ]
+            },
+            "id": "tx2025qdpddh"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.27,
+                "place": "19 km WNW of Progreso, B.C., MX",
+                "time": 1755436003240,
+                "updated": 1755436224434,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40401162",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40401162.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 25,
+                "net": "ci",
+                "code": "40401162",
+                "ids": ",ci40401162,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 23,
+                "dmin": 0.02899,
+                "rms": 0.14,
+                "gap": 121,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.3 - 19 km WNW of Progreso, B.C., MX"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.7536667,
+                    32.667,
+                    8.05
+                ]
+            },
+            "id": "ci40401162"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.49,
+                "place": "6 km SE of Bombay Beach, CA",
+                "time": 1755435597350,
+                "updated": 1755435811490,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40401146",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40401146.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 34,
+                "net": "ci",
+                "code": "40401146",
+                "ids": ",ci40401146,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 45,
+                "dmin": 0.06317,
+                "rms": 0.23,
+                "gap": 78,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.5 - 6 km SE of Bombay Beach, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.6921667,
+                    33.3096667,
+                    4.94
+                ]
+            },
+            "id": "ci40401146"
+        }
+    ],
+    "bbox": [
+        -179.9338,
+        -65.0219,
+        -3.49,
+        179.8394,
+        79.1922,
+        634.664
+    ]
+}
