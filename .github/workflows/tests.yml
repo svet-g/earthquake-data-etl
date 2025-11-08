@@ -1,0 +1,36 @@
+name: Earthquake ETL Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      ENV: test
+      SOURCE_DB_NAME: ":memory:"
+      SOURCE_DB_HOST: localhost
+      TARGET_DB_NAME: ":memory:"
+      TARGET_DB_HOST: localhost
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          run_tests all
