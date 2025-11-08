@@ -134,7 +134,7 @@ class TestExtractInitialMonth:
             extract_initial_month(url, file_path_data, file_path_tracker)
             # assert
             assert (
-                "Tracker file successful created - time: 1993-08-17T10:31:19, path: /home/svet-g/df/capstone/earthquake-data-etl/test_extract_tracker.json"
+                f"Tracker file successful created - time: 1993-08-17T10:31:19, path: {file_path_tracker} :)"
                 in caplog.text
             )
             # clean up test file
