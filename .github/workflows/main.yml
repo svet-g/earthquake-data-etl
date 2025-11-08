@@ -18,6 +18,7 @@ on:
 jobs:
   run-etl:
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'prod' }}
     services:
       postgres:
         image: postgres:14
@@ -83,6 +84,7 @@ jobs:
         if: ${{ github.event.inputs.environment == 'prod' || github.event_name == 'schedule' }}
         run: |
           cat > .env << EOF
+          ENV=${{ github.event.inputs.environment || 'prod' }}
           SOURCE_DB_NAME=${{ secrets.SOURCE_DB_NAME }}
           SOURCE_DB_USER=${{ secrets.SOURCE_DB_USER }}
           SOURCE_DB_PASSWORD=${{ secrets.SOURCE_DB_PASSWORD }}
