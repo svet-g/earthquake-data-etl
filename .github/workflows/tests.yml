@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Run ETL tests
     runs-on: ubuntu-latest
     env:
       ENV: test
@@ -30,6 +31,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .
           pip install -r requirements.txt
+
+      - name: Create test environment file
+        run: |
+          echo 'ENV=test' > .env.test
+          echo 'SOURCE_DB_NAME=":memory:"' >> .env.test
+          echo 'SOURCE_DB_USER=' >> .env.test
+          echo 'SOURCE_DB_PASSWORD=' >> .env.test
+          echo 'SOURCE_DB_HOST=localhost' >> .env.test
+          echo 'SOURCE_DB_PORT=5432' >> .env.test
+          echo 'TARGET_DB_NAME=":memory:"' >> .env.test
+          echo 'TARGET_DB_USER=' >> .env.test
+          echo 'TARGET_DB_PASSWORD=' >> .env.test
+          echo 'TARGET_DB_HOST=localhost' >> .env.test
+          echo 'TARGET_DB_PORT=5432' >> .env.test
 
       - name: Run tests
         run: |
